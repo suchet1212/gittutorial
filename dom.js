@@ -1,8 +1,12 @@
 //console.log(document.all);
-let t= document.getElementsByClassName('title');
+let items= document.getElementsByClassName('list-group-item');
+ 
+items[1]="Hello 2";
+items[1].style.fontWeight='bold';
+items[1].style.backgroundColor='yellow';
 
-t[0].style.FontWeight='bold';
-t[0].style.color='green';
-console.log(t[0]);
-let header = document.getElementById('main-header');
-header.style.borderBottom='solid 3px black';
+for(var i=0;i<items.length;i++){
+    items[i].style.backgroundColor='#f4f4f4';
+    items[i].style.fontWeight='bold';
+}
+items[2].style.backgroundColor='green';
