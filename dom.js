@@ -1,12 +1,12 @@
 //console.log(document.all);
-let items= document.getElementsByClassName('list-group-item');
+let t= document.getElementsByTagName('li');
  
-items[1]="Hello 2";
-items[1].style.fontWeight='bold';
-items[1].style.backgroundColor='yellow';
+t[1]="Hello 2";
+t[1].style.fontWeight='bold';
+t[1].style.backgroundColor='yellow';
 
 for(var i=0;i<items.length;i++){
-    items[i].style.backgroundColor='#f4f4f4';
-    items[i].style.fontWeight='bold';
+    t[i].style.backgroundColor='#f4f4f4';
+    t[i].style.fontWeight='bold';
 }
-items[2].style.backgroundColor='green';
+t[2].style.backgroundColor='green';
