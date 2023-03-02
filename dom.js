@@ -1,16 +1,38 @@
 //console.log(document.all);
  
-var a = document.querySelector('.list-group-item:nth-child(2)');
-var b = document.querySelector('.list-group-item:nth-child(3)');
-a.style.backgroundColor='green';
-b.style.backgroundColor='white';
-b.style.color='white';
-//Using querySelector
+//parentElement
+let a = document.querySelector('.title');
+console.log(a.parentElement);
+a.parentElement.style.backgroundColor='#f4f4f4';
+//lastElementChild
+let b=document.querySelector('#items');
+console.log(b.lastElementChild);
+//lastChild
+console.log(b.lastChild);
+//createChild
+let c=document.createElement('div');
 
-let c= document.querySelectorAll('.list-group-item');
-c[1].style.color='green';
-let d=document.querySelectorAll('.list-group-item:nth-child(odd)');
+c.className='hello';
+//Addid
+c.id='hello1';
+//Add attribute
+c.setAttribute('title','Hello Div');
+//createTextNode
+let c1=document.createTextNode('Hello!');
+//append
+c.appendChild(c1);
+let e=document.querySelector('header .container');
 
-for(let i=0;i<d.length;i++){
-    d[i].style.backgroundColor='green';
-}
+let d= document.querySelector('header h1');
+c.style.fontSize='40px';
+
+e.insertBefore(c,d);
+//nextSibling
+let f =document.querySelector('h2');
+console.log(f.nextSibling);
+console.log(f.nextElementSibling);
+console.log(f.previousSibling);
+console.log(f.previousElementSibling);
+
+
+
