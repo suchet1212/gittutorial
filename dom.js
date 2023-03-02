@@ -1,38 +1,42 @@
-//console.log(document.all);
- 
-//parentElement
-let a = document.querySelector('.title');
-console.log(a.parentElement);
-a.parentElement.style.backgroundColor='#f4f4f4';
-//lastElementChild
-let b=document.querySelector('#items');
-console.log(b.lastElementChild);
-//lastChild
-console.log(b.lastChild);
-//createChild
-let c=document.createElement('div');
+let form=document.getElementById('addForm');
+let itemlist=document.getElementById('items');
 
-c.className='hello';
-//Addid
-c.id='hello1';
-//Add attribute
-c.setAttribute('title','Hello Div');
-//createTextNode
-let c1=document.createTextNode('Hello!');
-//append
-c.appendChild(c1);
-let e=document.querySelector('header .container');
+form.addEventListener('submit',addItem);
+itemlist.addEventListener('click',removeItem);
 
-let d= document.querySelector('header h1');
-c.style.fontSize='40px';
+function addItem(e){
+    e.preventDefault();
 
-e.insertBefore(c,d);
-//nextSibling
-let f =document.querySelector('h2');
-console.log(f.nextSibling);
-console.log(f.nextElementSibling);
-console.log(f.previousSibling);
-console.log(f.previousElementSibling);
+let newItem=document.getElementById('item').value;
 
+var li=document.createElement('li');
+li.className='list-group-item';
 
+li.appendChild(document.createTextNode(newItem));
 
+//itemlist.appendChild(li);
+
+let butn=document.createElement('button');
+
+butn.className='btn btn-danger btn-sm float-right delete';
+
+butn.appendChild(document.createTextNode('X'));
+li.appendChild(butn);
+
+let edit=document.createElement('button');
+edit.className='btn btn-danger btn-sm float-right edit';
+edit.appendChild(document.createTextNode('E'));
+edit.style.backgroundColor='blue';
+li.appendChild(edit);
+itemlist.appendChild(li);
+}
+
+function removeItem(e){
+
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure?')){
+            let li=e.target.parentElement;
+            itemlist.removeChild(li);
+        }
+    }
+}
