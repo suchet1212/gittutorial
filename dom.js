@@ -1,18 +1,22 @@
 let form=document.getElementById('addForm');
 let itemlist=document.getElementById('items');
+let filter= document.getElementById('filter');
 
 form.addEventListener('submit',addItem);
 itemlist.addEventListener('click',removeItem);
+filter.addEventListener('keyup',filteritems);
 
 function addItem(e){
     e.preventDefault();
 
 let newItem=document.getElementById('item').value;
-
+let newDesc=document.getElementById('desc').value;
 var li=document.createElement('li');
 li.className='list-group-item';
 
 li.appendChild(document.createTextNode(newItem));
+//li.appendChild (document.createTextNode (" "));
+li.appendChild(document.createTextNode(newDesc));
 
 //itemlist.appendChild(li);
 
@@ -39,4 +43,19 @@ function removeItem(e){
             itemlist.removeChild(li);
         }
     }
+}
+
+function filteritems(e){
+let text=e.target.value.toLowerCase();
+let items=itemlist.getElementsByTagName('li');
+Array.from(items).forEach(function(item){
+    let itemName= item.firstChild.textContent;
+    let descp=item.childNodes[1].textContent
+
+    if(itemName.toLowerCase().indexOf(text)!=-1 || descp.toLowerCase().indexOf(text)!=-1){
+        item.style.display='block';
+    }else{
+        item.style.display='none';
+    }
+});
 }
